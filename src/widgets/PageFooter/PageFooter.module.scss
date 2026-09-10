@@ -1,0 +1,78 @@
+@use '@/shared/styles/variables' as vars;
+
+.footer {
+  width: 100%;
+  background-color: #f9f9f9;
+  border-top: 1px solid vars.$color-border-light;
+  color: vars.$color-text-muted;
+  margin-top: auto;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  @media (min-width: vars.$breakpoint-desktop) {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  color: vars.$color-text-dark;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.navBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link {
+  font-size: 14px;
+  color: vars.$color-text-muted;
+  transition: color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: vars.$color-primary;
+    outline: none;
+  }
+}
+
+.bottom {
+  border-top: 1px solid vars.$color-border-light;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  text-align: center;
+  font-size: 13px;
+}
