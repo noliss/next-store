@@ -1,6 +1,9 @@
-import { Metadata, Viewport } from 'next';
-import { PropsWithChildren } from 'react';
-import StoreProvider from './providers/StoreProvider';
+import type { Metadata, Viewport } from 'next';
+import type { PropsWithChildren } from 'react';
+import { PageFooter, PageHeader } from '@/widgets';
+import { StoreProvider } from '../providers';
+
+import '@/shared/styles/globals.scss';
 
 export const metadata: Metadata = {
   title: {
@@ -16,12 +19,14 @@ export const viewport: Viewport = {
   themeColor: '#ffffff',
 };
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ru">
       <body>
         <StoreProvider>
+          <PageHeader />
           <main>{children}</main>
+          <PageFooter />
         </StoreProvider>
       </body>
     </html>
