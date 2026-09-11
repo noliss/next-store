@@ -1,0 +1,81 @@
+@use 'variables' as vars;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: vars.$radius-sm;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:focus-visible {
+    outline: 2px solid vars.$color-primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+.md {
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.primary {
+  background-color: vars.$color-primary;
+  color: vars.$color-text-white;
+
+  &:hover:not(:disabled) {
+    background-color: vars.$color-primary-hover;
+  }
+}
+
+.secondary {
+  background-color: vars.$color-bg-white;
+  color: vars.$color-primary;
+  border: 1px solid vars.$color-primary;
+
+  &:hover:not(:disabled) {
+    background-color: vars.$color-bg-muted;
+  }
+}
+
+.ghost {
+  background-color: transparent;
+  color: vars.$color-text-muted;
+
+  &:hover:not(:disabled) {
+    color: vars.$color-primary;
+  }
+}
+
+.iconOnly {
+  padding: 0;
+  flex-shrink: 0;
+  &.md {
+    width: 40px;
+    height: 40px;
+  }
+  &.sm {
+    width: 32px;
+    height: 32px;
+  }
+}

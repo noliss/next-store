@@ -1,0 +1,67 @@
+@use 'variables' as vars;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 1;
+  color: vars.$color-text-white;
+  white-space: nowrap;
+}
+
+.tag {
+  padding: 3px 8px;
+  border-radius: vars.$radius-sm;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    font-size: 12px;
+  }
+}
+
+.counter {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: vars.$radius-pill;
+  font-size: 11px;
+  animation: pop-in 0.2s ease-out;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    min-width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+}
+
+.accent {
+  background-color: vars.$color-primary-light;
+}
+
+.danger {
+  background-color: vars.$color-error;
+}
+
+.muted {
+  background-color: vars.$color-text-muted;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .counter {
+    animation: none;
+  }
+}
