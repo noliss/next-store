@@ -1,0 +1,9 @@
+@use 'mixins' as mixins;
+
+.grid {
+  @include mixins.product-grid;
+}
+
+.item {
+  display: flex;
+}

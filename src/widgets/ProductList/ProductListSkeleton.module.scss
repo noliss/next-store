@@ -1,0 +1,33 @@
+@use 'variables' as vars;
+@use 'mixins' as mixins;
+
+.grid {
+  @include mixins.product-grid;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$radius-md;
+  overflow: hidden;
+}
+
+.image {
+  aspect-ratio: 1 / 1;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    padding: 16px;
+  }
+}
+
+.price {
+  margin-top: 4px;
+}
