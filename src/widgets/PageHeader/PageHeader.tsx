@@ -1,4 +1,4 @@
-import { Container, Link } from '@/shared/ui';
+import { Container, Link, Badge } from '@/shared/ui';
 import { ROUTES } from '@/shared/config';
 import styles from './PageHeader.module.scss';
 
@@ -25,9 +25,9 @@ export function PageHeader() {
           >
             <span>Избранное</span>
             {mockFavoritesCount > 0 && (
-              <span className={styles.badge} aria-hidden="true">
+              <Badge variant="danger" shape="counter" aria-hidden="true">
                 {mockFavoritesCount}
-              </span>
+              </Badge>
             )}
           </Link>
 
@@ -37,11 +37,9 @@ export function PageHeader() {
             aria-label={`Корзина, ${mockCartCount} товаров`}
           >
             <span>Корзина</span>
-            {mockCartCount > 0 && (
-              <span className={styles.badge} aria-hidden="true">
-                {mockCartCount}
-              </span>
-            )}
+            <Badge variant="danger" shape="counter" aria-hidden="true">
+              {mockCartCount}
+            </Badge>
           </Link>
         </nav>
       </Container>
