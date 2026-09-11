@@ -1,0 +1,40 @@
+@use 'variables' as vars;
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.current,
+.discounted {
+  font-weight: 700;
+  color: vars.$color-text-dark;
+}
+
+.discounted {
+  color: vars.$color-error;
+}
+
+.old {
+  font-size: 13px;
+  color: vars.$color-text-muted;
+}
+
+.md .current,
+.md .discounted {
+  font-size: 18px;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    font-size: 20px;
+  }
+}
+
+.lg .current,
+.lg .discounted {
+  font-size: 24px;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    font-size: 28px;
+  }
+}

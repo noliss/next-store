@@ -1,0 +1,106 @@
+@use 'variables' as vars;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: vars.$color-bg-white;
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$radius-md;
+  overflow: hidden;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    box-shadow: vars.$shadow-card;
+    transform: translateY(-2px);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px vars.$color-primary;
+  }
+}
+
+.imageLink {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background-color: vars.$color-bg-muted;
+}
+
+.labels {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    padding: 16px;
+  }
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    font-size: 15px;
+  }
+}
+
+.titleLink {
+  color: vars.$color-text-dark;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+
+  &:hover,
+  &:focus-visible {
+    color: vars.$color-primary;
+    outline: none;
+  }
+}
+
+.reviews {
+  font-size: 12px;
+  color: vars.$color-text-muted;
+}
+
+.priceSlot {
+  margin-top: auto;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+}
