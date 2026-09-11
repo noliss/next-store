@@ -1,15 +1,37 @@
+// Colors
 $color-primary: #1976d2;
 $color-primary-hover: #1565c0;
 $color-primary-light: #2196f3;
 
+// Error
 $color-error: #d32f2f;
 $color-error-hover: #c62828;
 
+// Background
+$color-bg-muted: #f5f5f5;
 $color-bg-white: #ffffff;
+
+// Border
 $color-border-light: #e0e0e0;
+
+// Text
 $color-text-dark: #333333;
 $color-text-muted: #555555;
 $color-text-shadow: rgba(0, 0, 0, 0.02);
+$color-text-white: #ffffff;
 
+// Breakpoints
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
+
+// Radius
+$radius-sm: 4px;
+$radius-md: 12px;
+$radius-pill: 999px;
+
+// Skeleton
+$color-skeleton-base: #f0f0f0;
+$color-skeleton-highlight: #e4e4e4;
+
+// Shadow
+$shadow-card: 0 8px 24px rgba(0, 0, 0, 0.08);

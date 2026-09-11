@@ -1,0 +1,17 @@
+@use 'variables' as vars;
+
+@mixin product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 16px 0 32px;
+  @media (min-width: vars.$breakpoint-tablet) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 24px 0 40px;
+  }
+  @media (min-width: vars.$breakpoint-desktop) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
