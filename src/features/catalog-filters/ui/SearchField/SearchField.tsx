@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Field, Input } from '@/shared/ui';
-import { ROUTES } from '@/shared/config';
+import { buildQueryHref } from '../../lib/build-query-href';
 
 const DEBOUNCE_MS = 300;
 
@@ -41,13 +41,7 @@ export function SearchField({ className }: SearchFieldProps) {
 
     const timer = window.setTimeout(() => {
       pendingSearchRef.current = trimmed;
-
-      const next = new URLSearchParams(searchParams.toString());
-      if (trimmed) next.set('search', trimmed);
-      else next.delete('search');
-
-      const qs = next.toString();
-      router.replace(qs ? `${ROUTES.HOME}?${qs}` : ROUTES.HOME);
+      router.replace(buildQueryHref(searchParams, { search: trimmed }));
     }, DEBOUNCE_MS);
 
     return () => window.clearTimeout(timer);

@@ -1,4 +1,4 @@
-import { ProductSearchParams } from '@/entities/product';
+import { PRODUCTS_PER_PAGE, ProductSearchParams } from '@/entities/product';
 import { ProductFilters } from '@/features/catalog-filters';
 import { Container } from '@/shared/ui';
 import { ProductList, ProductListSkeleton } from '@/widgets';
@@ -10,19 +10,11 @@ interface HomePageProps {
 export async function HomePage({ searchParams }: HomePageProps) {
   const params = await searchParams;
 
-  const filtersKey = JSON.stringify({
-    category: params.category,
-    minPrice: params.minPrice,
-    maxPrice: params.maxPrice,
-    inStock: params.inStock,
-    sort: params.sort,
-  });
-
   return (
     <Container>
       <h1>Каталог товаров</h1>
-      <ProductFilters key={filtersKey} values={params} />
-      <Suspense fallback={<ProductListSkeleton count={8} />}>
+      <ProductFilters values={params} />
+      <Suspense fallback={<ProductListSkeleton count={PRODUCTS_PER_PAGE} />}>
         <ProductList searchParams={params} />
       </Suspense>
     </Container>
