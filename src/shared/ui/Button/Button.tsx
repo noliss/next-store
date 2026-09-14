@@ -7,6 +7,7 @@ export type ButtonSize = 'sm' | 'md';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   fullWidth?: boolean;
   iconOnly?: boolean;
 }
@@ -15,6 +16,7 @@ export function Button({
   children,
   variant = 'primary',
   size = 'md',
+  onClick,
   fullWidth = false,
   iconOnly = false,
   type = 'button',
@@ -33,7 +35,7 @@ export function Button({
     .join(' ');
 
   return (
-    <button type={type} className={buttonClass} {...props}>
+    <button type={type} className={buttonClass} onClick={onClick} {...props}>
       {children}
     </button>
   );

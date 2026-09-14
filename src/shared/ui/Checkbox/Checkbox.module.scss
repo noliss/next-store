@@ -1,0 +1,20 @@
+@use 'variables' as vars;
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.input {
+  width: 16px;
+  height: 16px;
+  accent-color: vars.$color-primary;
+}
+
+.text {
+  font-size: 14px;
+  color: vars.$color-text-dark;
+}

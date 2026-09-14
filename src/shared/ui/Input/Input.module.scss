@@ -1,0 +1,28 @@
+@use 'variables' as vars;
+
+.input {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$radius-sm;
+  background-color: vars.$color-bg-white;
+  color: vars.$color-text-dark;
+
+  &::placeholder {
+    color: vars.$color-text-muted;
+  }
+
+  &:focus-visible {
+    outline: 2px solid vars.$color-primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
