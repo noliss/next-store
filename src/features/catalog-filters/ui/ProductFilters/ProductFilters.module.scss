@@ -1,0 +1,75 @@
+@use 'variables' as vars;
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin: 16px 0 8px;
+  padding: 12px;
+  background-color: vars.$color-bg-muted;
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$radius-md;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    gap: 16px;
+    padding: 16px;
+  }
+}
+
+.search {
+  flex: 1 1 100%;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    flex: 1 1 220px;
+  }
+}
+
+.prices {
+  border: 0;
+  min-width: 200px;
+  margin: 0;
+  padding: 0;
+}
+
+.legend {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: vars.$color-text-muted;
+  margin-bottom: 6px;
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceInput {
+  width: 108px;
+}
+
+.priceSep {
+  color: vars.$color-text-muted;
+  line-height: 40px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.reset {
+  font-size: 14px;
+  font-weight: 600;
+  color: vars.$color-text-muted;
+
+  &:hover,
+  &:focus-visible {
+    color: vars.$color-primary;
+    outline: none;
+  }
+}
