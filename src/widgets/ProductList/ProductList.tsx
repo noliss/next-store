@@ -1,20 +1,24 @@
 import styles from './ProductList.module.scss';
-import { ProductSearchParams, getProducts } from '@/entities/product';
-import { Button, EmptyState, Icon } from '@/shared/ui';
+import { applyCatalogQuery, getProducts } from '@/entities/product';
+import { Button, EmptyState, Icon, Link } from '@/shared/ui';
 import { ProductCard } from '@/entities/product';
+import type { ProductSearchParams } from '@/entities/product';
+import { ROUTES } from '@/shared/config';
 
-interface ProductListProps {
-  searchParams: ProductSearchParams;
-}
+export async function ProductList({ searchParams }: { searchParams: ProductSearchParams }) {
+  const products = applyCatalogQuery((await getProducts()).items, searchParams);
 
-export async function ProductList({ searchParams }: ProductListProps) {
-  const { items } = await getProducts(searchParams);
-
-  if (!items.length) return <EmptyState title="Товары не найдены" />;
+  if (!products.length)
+    return (
+      <EmptyState
+        title="Товары не найдены"
+        action={<Link href={ROUTES.HOME}>Сбросить фильтры</Link>}
+      />
+    );
 
   return (
     <ul className={styles.grid}>
-      {items.map((product, index) => (
+      {products.map((product, index) => (
         <li className={styles.item} key={product.id}>
           <ProductCard
             product={product}
