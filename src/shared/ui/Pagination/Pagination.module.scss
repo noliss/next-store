@@ -1,0 +1,75 @@
+@use 'variables' as vars;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 32px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page,
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$radius-sm;
+  background: vars.$color-bg-white;
+  color: vars.$color-text-dark;
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+
+  &:hover,
+  &:focus-visible {
+    border-color: vars.$color-primary;
+    color: vars.$color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid vars.$color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.arrow {
+  font-weight: 500;
+}
+
+.current {
+  border-color: vars.$color-primary;
+  background: vars.$color-primary;
+  color: vars.$color-text-white;
+
+  &:hover {
+    color: vars.$color-text-white;
+  }
+}
+
+.disabled {
+  color: vars.$color-text-muted;
+  opacity: 0.55;
+
+  &:hover {
+    border-color: vars.$color-border-light;
+    color: vars.$color-text-muted;
+  }
+}
+
+.gap {
+  padding: 0 4px;
+  color: vars.$color-text-muted;
+}

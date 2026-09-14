@@ -9,3 +9,5 @@ export { Field } from './Field';
 export { Input } from './Input';
 export { Select } from './Select';
 export { Checkbox } from './Checkbox';
+export { ErrorState } from './ErrorState';
+export { Pagination } from './Pagination';
