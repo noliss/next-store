@@ -21,39 +21,32 @@ export function ProductCard({ product, actions, priority = false, overlay }: Pro
   return (
     <article className={styles.card}>
       <div className={styles.imageWrapper}>
-        <Link
-          href={ROUTES.PRODUCT_DETAILS(id)}
-          className={styles.imageLink}
-          tabIndex={-1}
-          aria-hidden="true"
-        >
-          <ProductImage
-            src={previewPicture}
-            priority={priority}
-            alt=""
-            sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
-          />
+        <ProductImage
+          src={previewPicture}
+          priority={priority}
+          alt=""
+          sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+        />
 
-          {hasLabels && (
-            <ul className={styles.labels}>
-              {labels.newLabel && (
-                <li>
-                  <Badge variant="accent">Новинка</Badge>
-                </li>
-              )}
-              {hasDiscount && (
-                <li>
-                  <Badge variant="danger">{labels.discount ?? 'Скидка'}</Badge>
-                </li>
-              )}
-              {!inStock && (
-                <li>
-                  <Badge variant="muted">Нет в наличии</Badge>
-                </li>
-              )}
-            </ul>
-          )}
-        </Link>
+        {hasLabels && (
+          <ul className={styles.labels}>
+            {labels.newLabel && (
+              <li>
+                <Badge variant="accent">Новинка</Badge>
+              </li>
+            )}
+            {hasDiscount && (
+              <li>
+                <Badge variant="danger">{labels.discount ?? 'Скидка'}</Badge>
+              </li>
+            )}
+            {!inStock && (
+              <li>
+                <Badge variant="muted">Нет в наличии</Badge>
+              </li>
+            )}
+          </ul>
+        )}
 
         {overlay && <div className={styles.overlay}>{overlay}</div>}
       </div>
@@ -61,7 +54,7 @@ export function ProductCard({ product, actions, priority = false, overlay }: Pro
       <div className={styles.body}>
         <h3 className={styles.title}>
           <Link href={ROUTES.PRODUCT_DETAILS(id)} className={styles.titleLink}>
-            {name}
+            <span className={styles.titleText}>{name}</span>
           </Link>
         </h3>
 

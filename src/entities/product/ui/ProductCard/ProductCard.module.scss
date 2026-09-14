@@ -1,6 +1,7 @@
 @use 'variables' as vars;
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -22,12 +23,6 @@
   &:focus-within {
     box-shadow: 0 0 0 2px vars.$color-primary;
   }
-}
-
-.imageLink {
-  position: absolute;
-  inset: 0;
-  display: block;
 }
 
 .imageWrapper {
@@ -72,17 +67,26 @@
 
 .titleLink {
   color: vars.$color-text-dark;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
 
   &:hover,
   &:focus-visible {
     color: vars.$color-primary;
     outline: none;
   }
+}
+
+.titleText {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
 .reviews {
@@ -95,6 +99,8 @@
 }
 
 .actions {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: row;
   align-items: stretch;
