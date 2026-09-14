@@ -2,8 +2,10 @@
 
 .row {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 8px;
+  gap: 4px 8px;
+  min-width: 0;
 }
 
 .current,
@@ -23,7 +25,7 @@
 
 .md .current,
 .md .discounted {
-  font-size: 18px;
+  font-size: 17px;
 
   @media (min-width: vars.$breakpoint-tablet) {
     font-size: 20px;

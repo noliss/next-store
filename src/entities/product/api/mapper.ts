@@ -1,5 +1,5 @@
-import { ProductItemDto, ProductsResponseDto } from '../api/dto';
-import { Product, ProductsPage } from './types';
+import type { Product, ProductsPage } from '../model/types';
+import type { ProductItemDto, ProductsResponseDto } from './dto';
 
 const getCategory = (name: string): Product['category'] =>
   name.toLowerCase().startsWith('ружь') ? 'shotgun' : 'rifle';

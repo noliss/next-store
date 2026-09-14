@@ -15,12 +15,12 @@ export function applyCatalogQuery(items: Product[], query: ProductSearchParams):
 
   if (query.minPrice) {
     const min = Number(query.minPrice);
-    result = result.filter((item) => sellingPrice(item) >= min);
+    if (Number.isFinite(min)) result = result.filter((item) => sellingPrice(item) >= min);
   }
 
   if (query.maxPrice) {
     const max = Number(query.maxPrice);
-    result = result.filter((item) => sellingPrice(item) <= max);
+    if (Number.isFinite(max)) result = result.filter((item) => sellingPrice(item) <= max);
   }
 
   if (query.search?.trim()) {

@@ -1,0 +1,50 @@
+@use 'variables' as vars;
+
+.section {
+  padding: 20px;
+  background: vars.$color-bg-white;
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$radius-md;
+}
+
+.title {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: vars.$color-text-dark;
+}
+
+.list {
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid vars.$color-border-light;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    grid-template-columns: 240px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+}
+
+.label {
+  margin: 0;
+  font-size: 14px;
+  color: vars.$color-text-muted;
+}
+
+.value {
+  margin: 0;
+  font-size: 15px;
+  color: vars.$color-text-dark;
+}

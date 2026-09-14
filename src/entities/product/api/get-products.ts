@@ -1,4 +1,4 @@
-import { mapProductsResponseDto } from '../model/mapper';
+import { mapProductsResponseDto } from './mapper';
 import type { ProductsResponseDto } from './dto';
 import type { ProductsPage } from '../model/types';
 import { API_URL } from '@/shared/config/env/env';

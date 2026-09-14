@@ -5,6 +5,7 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
+  min-width: 0;
   background-color: vars.$color-bg-white;
   border: 1px solid vars.$color-border-light;
   border-radius: vars.$radius-md;
@@ -50,6 +51,7 @@
   flex: 1;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
   padding: 12px;
 
   @media (min-width: vars.$breakpoint-tablet) {
@@ -61,6 +63,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
+  overflow-wrap: anywhere;
 
   @media (min-width: vars.$breakpoint-tablet) {
     font-size: 15px;
@@ -96,6 +99,7 @@
   flex-direction: row;
   align-items: stretch;
   gap: 8px;
+  min-width: 0;
 }
 
 .overlay {
