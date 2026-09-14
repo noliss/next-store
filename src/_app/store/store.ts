@@ -1,15 +1,16 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { cartReducer } from '@/entities/cart';
+import { favoritesReducer } from '@/entities/favorites';
+import { persistReducer } from '../model/persist-slice';
 
 const rootReducer = combineReducers({
-  _stub: (state = {}) => state,
+  cart: cartReducer,
+  favorites: favoritesReducer,
+  persist: persistReducer,
 });
 
-export const makeStore = () => {
-  return configureStore({
-    reducer: rootReducer,
-  });
-};
+export const makeStore = () => configureStore({ reducer: rootReducer });
 
+export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof makeStore>;
-export type RootState = ReturnType<AppStore['getState']>;
 export type AppDispatch = AppStore['dispatch'];

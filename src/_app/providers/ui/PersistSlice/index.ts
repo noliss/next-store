@@ -1,0 +1,1 @@
+export { PersistSlice } from './PersistSlice';

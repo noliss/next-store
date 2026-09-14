@@ -1,0 +1,1 @@
+export { StorePersistence } from './StorePersistence';
