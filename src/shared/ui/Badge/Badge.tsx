@@ -1,8 +1,8 @@
 import type { HTMLAttributes, PropsWithChildren } from 'react';
 import styles from './Badge.module.scss';
 
-export type BadgeVariant = 'accent' | 'danger' | 'muted';
-export type BadgeShape = 'tag' | 'counter';
+type BadgeVariant = 'accent' | 'danger' | 'muted';
+type BadgeShape = 'tag' | 'counter';
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: BadgeVariant;

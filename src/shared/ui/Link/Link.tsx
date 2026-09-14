@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import type { LinkProps } from 'next/link';
 import type { AnchorHTMLAttributes, PropsWithChildren } from 'react';
 
-export type LinkComponentProps = LinkProps &
+type LinkComponentProps = LinkProps &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps>;
 
 export const Link = forwardRef<HTMLAnchorElement, PropsWithChildren<LinkComponentProps>>(
