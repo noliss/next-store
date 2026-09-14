@@ -7,3 +7,4 @@ export type {
   ProductCharacteristic,
   ProductLabels,
 } from './model/types';
+export { applyCatalogQuery } from './model/apply-catalog-query';

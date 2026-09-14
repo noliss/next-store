@@ -4,6 +4,7 @@ export interface Product {
   previewPicture: string | null;
   price: number;
   discountPrice: number | null;
+  category: 'rifle' | 'shotgun';
   inStock: boolean;
   quantity: number;
   reviewsCount: number;

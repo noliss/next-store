@@ -1,13 +1,17 @@
 import { ProductItemDto, ProductsResponseDto } from '../api/dto';
 import { Product, ProductsPage } from './types';
 
+const getCategory = (name: string): Product['category'] =>
+  name.toLowerCase().startsWith('ружь') ? 'shotgun' : 'rifle';
+
 export const mapProductDto = (dto: ProductItemDto): Product => ({
   id: dto.id.toString(),
   name: dto.name,
   previewPicture: dto.preview_picture ?? null,
   price: dto.price,
   discountPrice: dto.price_discount && dto.price_discount > 0 ? dto.price_discount : null,
-  inStock: dto.available,
+  category: getCategory(dto.name),
+  inStock: dto.quantity > 0,
   quantity: dto.quantity,
   reviewsCount: dto.reviews,
   characteristics: dto.characteristics.map((characteristic) => ({
