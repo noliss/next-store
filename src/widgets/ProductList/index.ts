@@ -1,2 +1,2 @@
-export { ProductList } from './ProductList';
-export { ProductListSkeleton } from './ProductListSkeleton';
+export { ProductList } from './ui/ProductList';
+export { ProductListSkeleton } from './ui/ProductListSkeleton';

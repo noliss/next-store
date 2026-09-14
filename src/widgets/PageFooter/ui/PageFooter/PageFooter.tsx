@@ -9,8 +9,16 @@ export function PageFooter() {
     <footer className={styles.footer}>
       <Container className={styles.content}>
         <div className={styles.infoBlock}>
-          <h3 className={styles.title}>О Магазине</h3>
-          <p className={styles.text}>Test</p>
+          <h3 className={styles.title}>О магазине</h3>
+          <p className={styles.text}>
+            Продаём охотничьи карабины и ружья с 2010 года. Работаем только с официальными
+            поставщиками, каждую единицу проверяем перед отправкой и оформляем все документы для
+            законной покупки.
+          </p>
+          <p className={styles.text}>
+            Продажа оружия возможна при наличии разрешения. Консультируем по подбору и помогаем с
+            оформлением.
+          </p>
         </div>
 
         <div className={styles.navBlock}>

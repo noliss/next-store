@@ -1,1 +1,1 @@
-export { RootLayout, metadata, viewport } from './RootLayout';
+export { RootLayout, metadata, viewport } from './ui/RootLayout';

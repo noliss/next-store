@@ -12,8 +12,10 @@
 
 .content {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 8px 16px;
   padding-top: 12px;
   padding-bottom: 12px;
 
@@ -29,7 +31,7 @@
 }
 
 .logo {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: vars.$color-primary;
   text-decoration: none;
@@ -42,10 +44,14 @@
 
 .nav {
   display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  justify-content: flex-end;
+  gap: 8px 14px;
 
   @media (min-width: vars.$breakpoint-tablet) {
+    flex: 0 1 auto;
     gap: 28px;
   }
 }
@@ -57,6 +63,7 @@
   gap: 6px;
   font-size: 14px;
   font-weight: 500;
+  white-space: nowrap;
   color: vars.$color-text-muted;
   text-decoration: none;
   transition: color 0.2s ease;

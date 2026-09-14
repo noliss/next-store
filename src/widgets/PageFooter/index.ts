@@ -1,1 +1,1 @@
-export { PageFooter } from './PageFooter';
+export { PageFooter } from './ui/PageFooter';
