@@ -38,18 +38,13 @@ export function PageFooter() {
           <h3 className={styles.title}>Категории</h3>
           <ul className={styles.list}>
             <li>
-              <Link href="/?category=electronics" className={styles.link}>
-                Электроника
+              <Link href="/?category=rifle" className={styles.link}>
+                Карабины
               </Link>
             </li>
             <li>
-              <Link href="/?category=clothing" className={styles.link}>
-                Одежда
-              </Link>
-            </li>
-            <li>
-              <Link href="/?category=shoes" className={styles.link}>
-                Обувь
+              <Link href="/?category=shotgun" className={styles.link}>
+                Ружья
               </Link>
             </li>
           </ul>
