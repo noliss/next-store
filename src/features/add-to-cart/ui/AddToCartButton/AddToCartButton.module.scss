@@ -1,0 +1,15 @@
+$button-md-height: calc(1.2 * 14px + 20px);
+
+.status {
+  display: flex;
+}
+
+.skeleton {
+  width: 100%;
+  height: $button-md-height;
+}
+
+.skeletonInline {
+  width: 148px;
+  height: $button-md-height;
+}
