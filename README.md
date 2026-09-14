@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Магазин — каталог, избранное, корзина
 
-## Getting Started
+SSR-приложение на Next.js: каталог с фильтрами и поиском, карточка товара, избранное и корзина.
+Товары приходят из внешнего API, корзина и избранное хранятся в `localStorage`.
 
-First, run the development server:
+Демо: _будет добавлено после деплоя_
+
+## Запуск
+
+Нужен Node 20.9+ и npm.
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Экраны ошибок, стриминг и метаданные корректно видны только в production-режиме: `npm run build && npm start`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Переменная | Обязательна | Зачем                                                           |
+| ---------- | ----------- | --------------------------------------------------------------- |
+| `API_URL`  | да          | Адрес API товаров                                               |
+| `SITE_URL` | нет         | Адрес сайта для canonical и OG-ссылок, по умолчанию `localhost` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Обе переменные серверные: `API_URL` читается через `server-only`-модуль и падает с внятной ошибкой, если не задан.
 
-## Learn More
+Скрипты: `dev`, `build`, `start`, `test`, `test:watch`, `lint`, `typecheck`.
+На pre-commit прогоняются ESLint, Prettier, тесты по затронутым файлам и `tsc --noEmit` по всему проекту.
 
-To learn more about Next.js, take a look at the following resources:
+## Решения
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**SCSS Modules вместо CSS-in-JS** — из-за серверных компонентов. Каталог и карточка рендерятся на сервере, а styled-components тянет рантайм и требует клиентской границы там, где она не нужна. Модули дают скоупинг на этапе сборки и нулевой рантайм. Переменные лежат в `_variables.scss` и подключаются через `sassOptions.loadPaths`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Feature-Sliced Design**: `shared` → `entities` → `features` → `widgets` → `_pages` → `_app`. Подчёркивания вынужденные — имена `app` и `pages` заняты роутером. Папка `app/` содержит только тонкие реэкспорты страниц, так роутинг остаётся деталью фреймворка. Наружу слайсы доступны через `index.ts`; у `entities/product` их два, потому что серверные запросы тянут `server-only` и не могут лежать в общем barrel рядом с клиентскими компонентами.
 
-## Deploy on Vercel
+**Фильтры, поиск и страница в URL, а не в Redux.** Ссылкой можно поделиться, состояние выживает перезагрузку, а фильтрация остаётся на сервере — в браузер не уезжает весь каталог.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Пагинация страницами** API отдаёт весь каталог одним ответом и игнорирует `page` с `per_page`, так что подгружать нечего — остаётся срез на сервере по 12 товаров.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Redux Toolkit** держит только корзину и избранное: слайсы, мемоизированные селекторы, типизированные хуки.
+
+## Гидратация
+
+`localStorage` недоступен на сервере, поэтому чтение вынесено в эффект после монтирования — попытка ускорить это через `preloadedState` даёт ровно тот mismatch, от которого уходишь.
+
+Есть и вторая, менее заметная проблема: персист живёт в layout, выше `Suspense`, а каталог гидратируется отдельным, более поздним проходом. В зазоре эффект успевает прочитать хранилище, и к моменту гидратации карточек стор уже не пустой. Значит, флаг «ещё не гидратировались» обязан быть локальным для компонента — он собран на `useSyncExternalStore`, где `getServerSnapshot` возвращает `false`.
+
+Пока состояние неизвестно, на месте кнопок и списков показываются скелетоны.
+
+## Ошибки
+
+У каждого сегмента свой `error.tsx` с кнопкой «Повторить», плюс `global-error.tsx`.
+
+## Тесты
+
+Vitest, 30 проверок: `applyCatalogQuery`, маппер DTO, редьюсеры корзины и избранного.
+
+## Что не успел
+
+- Undo после удаления; он же закрыл бы фокус-менеджмент, который сейчас слабое место в доступности.
+- Тесты клиентских компонентов
