@@ -5,6 +5,9 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   padding: 16px 0 32px;
+  @media (max-width: 340px) {
+    grid-template-columns: 1fr;
+  }
   @media (min-width: vars.$breakpoint-tablet) {
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
