@@ -1,10 +1,14 @@
+import { getProducts } from '@/entities/product/api';
 import { Container } from '@/shared/ui';
+import { FavoritesView } from '@/widgets';
 
-export function FavoritesPage() {
+export async function FavoritesPage() {
+  const { items } = await getProducts();
+
   return (
     <Container>
       <h1>Избранное</h1>
-      <p>Товары</p>
+      <FavoritesView products={items} />
     </Container>
   );
 }

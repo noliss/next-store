@@ -1,0 +1,144 @@
+@use 'variables' as vars;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px 0 40px;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: vars.$color-text-muted;
+}
+
+.breadcrumbLink {
+  color: vars.$color-primary;
+
+  &:hover,
+  &:focus-visible {
+    color: vars.$color-primary-hover;
+  }
+}
+
+.breadcrumbSep {
+  color: vars.$color-border-light;
+}
+
+.breadcrumbCurrent {
+  color: vars.$color-text-dark;
+}
+
+.hero {
+  display: grid;
+  gap: 24px;
+
+  @media (min-width: vars.$breakpoint-desktop) {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    gap: 32px;
+    align-items: start;
+  }
+}
+
+.gallery {
+  min-width: 0;
+}
+
+.imageFrame {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: vars.$color-bg-muted;
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$radius-md;
+  overflow: hidden;
+}
+
+.labels {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: vars.$color-bg-white;
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$radius-md;
+
+  @media (min-width: vars.$breakpoint-desktop) {
+    position: sticky;
+    top: 16px;
+  }
+}
+
+.category {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: vars.$color-text-muted;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: vars.$color-text-dark;
+
+  @media (min-width: vars.$breakpoint-tablet) {
+    font-size: 28px;
+  }
+}
+
+.reviews {
+  margin: 0;
+  font-size: 14px;
+  color: vars.$color-text-muted;
+}
+
+.price {
+  margin-top: 4px;
+}
+
+.stock {
+  margin: 0;
+  font-size: 14px;
+}
+
+.inStock {
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.outOfStock {
+  color: vars.$color-error;
+  font-weight: 500;
+}
+
+.quantity {
+  color: vars.$color-text-muted;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}

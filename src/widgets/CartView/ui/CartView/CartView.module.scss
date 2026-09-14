@@ -1,0 +1,64 @@
+@use 'variables' as vars;
+
+.layout {
+  display: grid;
+  gap: 24px;
+  padding: 16px 0 40px;
+
+  @media (min-width: vars.$breakpoint-desktop) {
+    grid-template-columns: 1fr 300px;
+    align-items: start;
+    gap: 32px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  margin: 0;
+}
+
+.summary {
+  padding: 20px;
+  background: vars.$color-bg-white;
+  border: 1px solid vars.$color-border-light;
+  border-radius: vars.$radius-md;
+
+  @media (min-width: vars.$breakpoint-desktop) {
+    position: sticky;
+    top: 16px;
+  }
+}
+
+.summaryLabel {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: vars.$color-text-muted;
+}
+
+.summaryValue {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: vars.$color-text-dark;
+}
+
+.summaryNotice {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: vars.$color-error;
+}
+
+.skeletonRow {
+  display: block;
+  width: 100%;
+  border-radius: vars.$radius-md;
+}
